@@ -36,7 +36,7 @@ method.
 
  * [proxymod Main Method](pacifica/proxymod/__main__.py#L37-L69)
  * [proxymod WSGI API](pacifica/proxymod/__main__.py#L35)
- * [proxymod CherryPy Objects](pacifica/proxymod/__main__.py#33)
+ * [proxymod CherryPy Objects](pacifica/proxymod/__main__.py#L33)
 
 ### Celery
 

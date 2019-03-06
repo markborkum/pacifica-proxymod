@@ -63,7 +63,8 @@ Perform these steps in three separate terminals.
  2. `celery -A pacifica.proxymod.__main__ worker -l info`
  3. `python3 -m pacifica.proxymod --config cpconfig.ini`
 
-To test working system run the following in `bash`:
+## Testing
 
- 1. `curl -X "POST" -H "Content-Type: application/json" -d @test_files/C234-1234-1234/event.json "http://localhost:8069/receive"` (where `test_files/C234-1234-1234/event.json` is the JSON payload)
- 2. `curl http://127.0.0.1:8069/status/54e41964-0b19-48f3-9a0d-d9a86584766c` (where `54e41964-0b19-48f3-9a0d-d9a86584766c` is the UUID for the Celery task for the JSON payload)
+To test, perform these steps:
+
+ 1. `python3 -m unittest pacifica/proxymod/tests/test_*.py`

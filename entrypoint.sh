@@ -20,7 +20,7 @@ fi
 if ! [[ -f "~/.pacifica-proxymod/cpconfig.ini" ]] ; then
   printf "[database]\npeewee_url = \"${PEEWEE_DATABASE_URL}\"\n" > ~/.pacifica-proxymod/cpconfig.ini
 fi
-python -c "from pacifica.proxymod.orm import database_setup; database_setup()"
+python -c "from pacifica.proxymod.__main__ import EventModel; EventModel.create_table(safe=True)"
 uwsgi \
   --http-socket "0.0.0.0:8069" \
   --master \

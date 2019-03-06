@@ -15,13 +15,13 @@ if ! [[ -d "~/.pacifica-proxymod/" ]] ; then
   mkdir ~/.pacifica-proxymod/
 fi
 if ! [[ -f "~/.pacifica-proxymod/config.ini" ]] ; then
-  printf "[database]\npeewee_url = \"${PEEWEE_DATABASE_URL}\"\n" > ~/.pacifica-proxymod/config.ini
+  printf "[database]\npeewee_url = \"${PEEWEE_DATABASE_URL}\"" > ~/.pacifica-proxymod/config.ini
 fi
 if ! [[ -f "~/.pacifica-proxymod/cpconfig.ini" ]] ; then
-  printf "[database]\npeewee_url = \"${PEEWEE_DATABASE_URL}\"\n" > ~/.pacifica-proxymod/cpconfig.ini
+  printf "[global]\nlog.screen: True\nlog.access_file: 'access.log'\nlog.error_file: 'error.log'\nserver.socket_host: '0.0.0.0'\nserver.socket_port: 8069\nengine.autoreload.on: False\n\n[/]\nrequest.dispatch: cherrypy.dispatch.MethodDispatcher()" > ~/.pacifica-proxymod/cpconfig.ini
 fi
 uwsgi \
   --http-socket "0.0.0.0:8069" \
   --master \
   --die-on-term \
-  --wsgi-file /usr/src/app/pacifica/proxymod/wsgi.py "$@"
+  --wsgi-file /usr/src/app/pacifica/proxymod/__main__.py "$@"

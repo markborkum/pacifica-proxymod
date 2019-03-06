@@ -15,9 +15,9 @@ if ! [[ -d "~/.pacifica-proxymod/" ]] ; then
   mkdir ~/.pacifica-proxymod/
 fi
 if ! [[ -f "~/.pacifica-proxymod/config.ini" ]] ; then
-  printf "[database]\npeewee_url = \"${PEEWEE_DATABASE_URL}\"\n" > ~/.pacifica-proxymod/config.ini
+  printf "[database]\npeewee_url = \"${PEEWEE_DATABASE_URL}\"" > ~/.pacifica-proxymod/config.ini
 fi
 if ! [[ -f "~/.pacifica-proxymod/cpconfig.ini" ]] ; then
-  printf "[database]\npeewee_url = \"${PEEWEE_DATABASE_URL}\"\n" > ~/.pacifica-proxymod/cpconfig.ini
+  printf "[global]\nlog.screen: True\nlog.access_file: 'access.log'\nlog.error_file: 'error.log'\nserver.socket_host: '0.0.0.0'\nserver.socket_port: 8069\nengine.autoreload.on: False\n\n[/]\nrequest.dispatch: cherrypy.dispatch.MethodDispatcher()" > ~/.pacifica-proxymod/cpconfig.ini
 fi
-celery -A "pacifica.proxymod.tasks" worker --loglevel="info"
+celery -A "pacifica.proxymod.__main__" worker --loglevel="info"

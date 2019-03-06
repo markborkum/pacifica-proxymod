@@ -34,7 +34,7 @@ celery_app = create_celery_app(EventModel, router, name='pacifica.proxymod.tasks
 
 Root = create_cherrypy_app(EventModel, celery_app.tasks['pacifica.proxymod.tasks.receive'])
 
-wsgiapp = cherrypy.Application(Root(), '/', config=CHERRYPY_CONFIG_FILE_PATH_)
+application = cherrypy.Application(Root(), '/', config=CHERRYPY_CONFIG_FILE_PATH_)
 
 if __name__ == '__main__':
     def _stop_later(secs) -> None:
@@ -68,4 +68,4 @@ if __name__ == '__main__':
     })
     cherrypy.quickstart(Root(), '/', config=args.config)
 
-__all__ = ['EventModel', 'Root', 'celery_app', 'wsgiapp']
+__all__ = ['EventModel', 'Root', 'application', 'celery_app']

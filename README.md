@@ -61,7 +61,7 @@ Perform these steps in three separate terminals.
 
  1. `docker-compose up rabbit`
  2. `celery -A pacifica.proxymod.__main__ worker -l info`
- 3. `python3 -m pacifica.proxymod --config server.conf`
+ 3. `python3 -m pacifica.proxymod --config cpconfig.ini`
 
 To test working system run the following in `bash`:
 

@@ -45,4 +45,4 @@ def create_peewee_model(db: peewee.Database) -> object:
 
     return EventModel
 
-__all__ = ['create_peewee_model']
+__all__ = ('create_peewee_model')

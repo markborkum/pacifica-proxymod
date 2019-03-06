@@ -124,4 +124,4 @@ class TransactionKeyValue(PacificaModel):
 
         return insts
 
-__all__ = ['PacificaModel', 'File', 'Transaction', 'TransactionKeyValue']
+__all__ = ('PacificaModel', 'File', 'Transaction', 'TransactionKeyValue')

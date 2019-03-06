@@ -107,4 +107,4 @@ def create_cherrypy_app(cls, receive_task: celery.Task) -> object:
 
     return Root
 
-__all__ = ['create_cherrypy_app']
+__all__ = ('create_cherrypy_app')

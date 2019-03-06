@@ -82,4 +82,4 @@ class RouteNotFoundRouterError(RouterError):
     def __str__(self) -> str: # pragma: no cover
         return 'route not found'
 
-__all__ = ['Route', 'Router', 'RouterError', 'RouteNotFoundRouterError']
+__all__ = ('Route', 'Router', 'RouterError', 'RouteNotFoundRouterError')

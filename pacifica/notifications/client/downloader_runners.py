@@ -73,4 +73,4 @@ class RemoteDownloaderRunner(DownloaderRunner):
 
         return openers
 
-__all__ = ['DownloaderRunner', 'LocalDownloaderRunner', 'RemoteDownloaderRunner']
+__all__ = ('DownloaderRunner', 'LocalDownloaderRunner', 'RemoteDownloaderRunner')

@@ -35,4 +35,4 @@ class TransactionDuplicateAttributeError(EventError):
     def __str__(self) -> str: # pragma: no cover
         return 'field \'Transactions.{0}\' is already defined'.format(self.name.replace('\'', '\\\''))
 
-__all__ = ['EventError', 'InvalidEventTypeValueError', 'InvalidSourceValueError', 'TransactionDuplicateAttributeError']
+__all__ = ('EventError', 'InvalidEventTypeValueError', 'InvalidSourceValueError', 'TransactionDuplicateAttributeError')

@@ -146,4 +146,4 @@ class RemoteUploaderRunner(UploaderRunner):
         finally:
             os.unlink(bundler_file.name)
 
-__all__ = ['UploaderRunner', 'LocalUploaderRunner', 'RemoteUploaderRunner']
+__all__ = ('UploaderRunner', 'LocalUploaderRunner', 'RemoteUploaderRunner')

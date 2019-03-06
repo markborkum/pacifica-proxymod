@@ -68,4 +68,4 @@ def create_celery_app(cls, router: Router, name: str = 'pacifica.notifications.s
 
     return celery_app
 
-__all__ = ['create_celery_app']
+__all__ = ('create_celery_app')

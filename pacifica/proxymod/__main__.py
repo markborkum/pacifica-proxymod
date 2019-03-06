@@ -68,4 +68,4 @@ if __name__ == '__main__':
     })
     cherrypy.quickstart(Root(), '/', config=args.config)
 
-__all__ = ['EventModel', 'Root', 'application', 'celery_app']
+__all__ = ('EventModel', 'Root', 'application', 'celery_app')

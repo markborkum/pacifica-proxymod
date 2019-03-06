@@ -27,4 +27,4 @@ class NoopEventHandler(EventHandler):
     def handle(self, event: Event) -> None:
         pass
 
-__all__ = ['EventHandler', 'NoopEventHandler']
+__all__ = ('EventHandler', 'NoopEventHandler')

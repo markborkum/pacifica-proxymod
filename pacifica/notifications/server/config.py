@@ -51,4 +51,4 @@ def get_config(path: str) -> SafeConfigParser:
 def get_config_file_path(key: str = 'PACIFICA_NOTIFICATIONS_SERVER_CONFIG', dirname: str = '.pacifica-notifications-server', basename: str = 'config.ini') -> str:
     return os.getenv(key, os.path.join(os.path.expanduser('~'), dirname, basename))
 
-__all__ = ['get_config', 'get_config_file_path']
+__all__ = ('get_config', 'get_config_file_path')

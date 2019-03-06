@@ -233,4 +233,4 @@ class ProxEventHandler(EventHandler):
 
         pass
 
-__all__ = ['ProxEventHandler']
+__all__ = ('ProxEventHandler')

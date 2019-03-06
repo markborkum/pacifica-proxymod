@@ -27,4 +27,4 @@ router = Router()
 
 router.add_route(Path.parse_file(os.path.join(os.path.dirname(__file__), 'jsonpath2', 'proxymod.txt')), ProxEventHandler(downloader_runner, uploader_runner))
 
-__all__ = ['router']
+__all__ = ('router')

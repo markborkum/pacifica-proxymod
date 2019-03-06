@@ -145,12 +145,11 @@ class ProxEventHandler(EventHandler):
                 model_file_funcs = []
 
                 for file_inst, opener in zip(file_insts, openers):
-                    if ('text/csv' == file_inst.mimetype) and ('inputs/' == file_inst.subdir):
+                    if ('text/csv' == file_inst.mimetype) and (file_inst.name is not None) and ((config_by_config_id.get('config_1', {}).get('INPUTS', {}).get('in_file_one', None) == file_inst.name) or (config_by_config_id.get('config_1', {}).get('INPUTS', {}).get('in_file_two', None) == file_inst.name)) and (file_inst.subdir is not None) and (config_by_config_id.get('config_1', {}).get('INPUTS', {}).get('in_dir', None) == file_inst.subdir):
                         input_file_insts.append(file_inst)
 
                         input_file_openers.append(opener)
-
-                    if ('text/x-python' == file_inst.mimetype) and ('models/' == file_inst.subdir):
+                    elif ('text/x-python' == file_inst.mimetype) and ('models/' == file_inst.subdir):
                         model_file_insts.append(file_inst)
 
                         with opener() as file:
@@ -171,6 +170,9 @@ class ProxEventHandler(EventHandler):
                                     func()
                             except Exception as reason:
                                 raise InvalidModelProxEventHandlerError(event, file_inst, reason)
+                    else:
+                        # NOTE Ignore other files.
+                        pass
 
                 abspath_config_by_config_id = copy.deepcopy(config_by_config_id)
 

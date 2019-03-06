@@ -28,6 +28,8 @@ CHERRYPY_CONFIG_FILE_PATH_ = get_config_file_path(key='PACIFICA_PROXYMOD_CPCONFI
 
 EventModel = create_peewee_model(playhouse.db_url.connect(get_config(CONFIG_FILE_PATH_).get('database', 'peewee_url')))
 
+EventModel.create_table(safe=True)
+
 celery_app = create_celery_app(EventModel, router, name='pacifica.proxymod.tasks', receive_task_name='pacifica.proxymod.tasks.receive', backend=os.getenv('BACKEND_URL', 'rpc://'), broker=os.getenv('BROKER_URL', 'pyamqp://'))
 
 Root = create_cherrypy_app(EventModel, celery_app.tasks['pacifica.proxymod.tasks.receive'])
@@ -56,8 +58,6 @@ if __name__ == '__main__':
     parser.add_argument('--stop-after-a-moment', help=argparse.SUPPRESS, default=False, dest='stop_later', action='store_true')
 
     args = parser.parse_args()
-
-    EventModel.create_table(safe=True)
 
     if args.stop_later:
         _stop_later(20)

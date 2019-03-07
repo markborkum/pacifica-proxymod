@@ -128,51 +128,61 @@ class ProxEventHandler(EventHandler):
             if not _is_valid_proxymod_config(config):
                 raise InvalidConfigProxEventHandlerError(event, config_id, config)
 
+        input_file_insts = []
+        model_file_insts = []
+
+        _in_dir = config_by_config_id.get('config_1', {}).get('INPUTS', {}).get('in_dir', None)
+        _in_file_one = config_by_config_id.get('config_1', {}).get('INPUTS', {}).get('in_file_one', None)
+        _in_file_two = config_by_config_id.get('config_1', {}).get('INPUTS', {}).get('in_file_two', None)
+
+        for file_inst in file_insts:
+            if ('text/csv' == file_inst.mimetype) and (file_inst.subdir is not None) and (_in_dir == file_inst.subdir) and (file_inst.name is not None) and ((_in_file_one == file_inst.name) or (_in_file_two == file_inst.name)):
+                input_file_insts.append(file_inst)
+            elif ('text/x-python' == file_inst.mimetype) and ('models/' == file_inst.subdir):
+                model_file_insts.append(file_inst)
+            else:
+                # NOTE Ignore other files.
+                pass
+
         with tempfile.TemporaryDirectory() as downloader_tempdir_name:
             with tempfile.TemporaryDirectory() as uploader_tempdir_name:
-                # openers = self.downloader_runner.download(file_insts)
+                # model_file_openers = self.downloader_runner.download(downloader_tempdir_name, model_file_insts)
 
                 with open(os.path.join(uploader_tempdir_name, 'download-stdout.log'), mode='w') as downloader_stdout_file:
                     with open(os.path.join(uploader_tempdir_name, 'download-stderr.log'), mode='w') as downloader_stderr_file:
                         with contextlib.redirect_stdout(downloader_stdout_file):
                             with contextlib.redirect_stderr(downloader_stderr_file):
-                                openers = self.downloader_runner.download(downloader_tempdir_name, file_insts)
+                                model_file_openers = self.downloader_runner.download(downloader_tempdir_name, model_file_insts)
 
-                input_file_insts = []
-                input_file_openers = []
-
-                model_file_insts = []
                 model_file_funcs = []
 
-                for file_inst, opener in zip(file_insts, openers):
-                    if ('text/csv' == file_inst.mimetype) and (file_inst.name is not None) and ((config_by_config_id.get('config_1', {}).get('INPUTS', {}).get('in_file_one', None) == file_inst.name) or (config_by_config_id.get('config_1', {}).get('INPUTS', {}).get('in_file_two', None) == file_inst.name)) and (file_inst.subdir is not None) and (config_by_config_id.get('config_1', {}).get('INPUTS', {}).get('in_dir', None) == file_inst.subdir):
-                        input_file_insts.append(file_inst)
+                for model_file_inst, model_file_opener in zip(model_file_insts, model_file_openers):
+                    with model_file_opener() as file:
+                        try:
+                            name = os.path.splitext(model_file_inst.name)[0]
 
-                        input_file_openers.append(opener)
-                    elif ('text/x-python' == file_inst.mimetype) and ('models/' == file_inst.subdir):
-                        model_file_insts.append(file_inst)
+                            spec = importlib.util.spec_from_file_location(name, file.name)
+                            module = importlib.util.module_from_spec(spec)
+                            spec.loader.exec_module(module)
 
-                        with opener() as file:
-                            try:
-                                name = os.path.splitext(file_inst.name)[0]
+                            # NOTE Deliberately raise `AttributeError` if `name` does not exist.
+                            func = getattr(module, name)
 
-                                spec = importlib.util.spec_from_file_location(name, file.name)
-                                module = importlib.util.module_from_spec(spec)
-                                spec.loader.exec_module(module)
+                            if callable(func):
+                                model_file_funcs.append(func)
+                            else:
+                                # NOTE Deliberately raise `TypeError` by calling an uncallable.
+                                func()
+                        except Exception as reason:
+                            raise InvalidModelProxEventHandlerError(event, model_file_inst, reason)
 
-                                # NOTE Deliberately raise `AttributeError` if `name` does not exist.
-                                func = getattr(module, name)
+                # input_file_openers = self.downloader_runner.download(downloader_tempdir_name, input_file_insts)
 
-                                if callable(func):
-                                    model_file_funcs.append(func)
-                                else:
-                                    # NOTE Deliberately raise `TypeError` by calling an uncallable.
-                                    func()
-                            except Exception as reason:
-                                raise InvalidModelProxEventHandlerError(event, file_inst, reason)
-                    else:
-                        # NOTE Ignore other files.
-                        pass
+                with open(os.path.join(uploader_tempdir_name, 'download-stdout.log'), mode='a') as downloader_stdout_file:
+                    with open(os.path.join(uploader_tempdir_name, 'download-stderr.log'), mode='a') as downloader_stderr_file:
+                        with contextlib.redirect_stdout(downloader_stdout_file):
+                            with contextlib.redirect_stderr(downloader_stderr_file):
+                                input_file_openers = self.downloader_runner.download(downloader_tempdir_name, input_file_insts)
 
                 abspath_config_by_config_id = copy.deepcopy(config_by_config_id)
 

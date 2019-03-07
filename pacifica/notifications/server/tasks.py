@@ -15,7 +15,7 @@ import typing
 
 import celery
 
-from pacifica.notifications.server.router import RouteNotFoundRouterError, Router
+from pacifica.notifications.client.router import RouteNotFoundRouterError, Router
 
 def create_celery_app(cls, router: Router, name: str = 'pacifica.notifications.server.tasks', receive_task_name: str = 'pacifica.notifications.server.tasks.receive', **kwargs) -> celery.Celery:
     celery_app = celery.Celery(name, **kwargs)

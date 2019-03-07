@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 #
-# pacifica-notifications-client: pacifica/notifications/server/router.py
+# pacifica-notifications-client: pacifica/notifications/client/router.py
 #
 # Copyright (c) 2019, Battelle Memorial Institute
 # All rights reserved.
@@ -13,7 +13,7 @@ import typing
 from cloudevents.model import Event
 from jsonpath2.path import Path
 
-from pacifica.notifications.server.event_handlers import EventHandler
+from pacifica.notifications.client.event_handlers import EventHandler
 
 class Route(object):
     def __init__(self, path: Path, event_handler: EventHandler) -> None:

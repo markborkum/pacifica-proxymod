@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 #
-# pacifica-notifications-client: pacifica/notifications/server/event_handlers.py
+# pacifica-notifications-client: pacifica/notifications/client/event_handlers.py
 #
 # Copyright (c) 2019, Battelle Memorial Institute
 # All rights reserved.

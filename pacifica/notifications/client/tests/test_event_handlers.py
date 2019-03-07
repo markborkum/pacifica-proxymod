@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 #
-# pacifica-notifications-client: pacifica/notifications/server/tests/test_event_handlers.py
+# pacifica-notifications-client: pacifica/notifications/client/tests/test_event_handlers.py
 #
 # Copyright (c) 2019, Battelle Memorial Institute
 # All rights reserved.
@@ -15,7 +15,7 @@ import unittest
 from cloudevents.constants import SPEC_VERSION
 from cloudevents.model import Event
 
-from pacifica.notifications.server.event_handlers import NoopEventHandler
+from pacifica.notifications.client.event_handlers import NoopEventHandler
 
 class NoopEventHandlerTestCase(unittest.TestCase):
     def test_event_handler(self):

@@ -21,7 +21,7 @@ from cloudevents.model import Event
 from pacifica.notifications.client.downloader_runners import DownloaderRunner
 from pacifica.notifications.client.models import File, Transaction, TransactionKeyValue
 from pacifica.notifications.client.uploader_runners import UploaderRunner
-from pacifica.notifications.server.event_handlers import EventHandler
+from pacifica.notifications.client.event_handlers import EventHandler
 from pacifica.proxymod.exceptions import ConfigNotFoundProxEventHandlerError, InvalidConfigProxEventHandlerError, InvalidModelProxEventHandlerError
 
 RE_PATTERN_PROXYMOD_TRANSACTION_KEY_VALUE_QUAD_ = re.compile(r'^' + re.escape('.').join([

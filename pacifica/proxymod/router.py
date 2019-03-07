@@ -15,7 +15,7 @@ from jsonpath2.path import Path
 from pacifica.downloader import Downloader
 from pacifica.notifications.client.downloader_runners import RemoteDownloaderRunner
 from pacifica.notifications.client.uploader_runners import RemoteUploaderRunner
-from pacifica.notifications.server.router import Router
+from pacifica.notifications.client.router import Router
 from pacifica.proxymod.event_handlers import ProxEventHandler
 from pacifica.uploader import Uploader
 

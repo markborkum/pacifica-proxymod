@@ -1,119 +1,163 @@
 $[?(
-  @["data"][*][?(
-      @["destinationTable"] = "TransactionKeyValue"
-          and
-      @["key"] = "proxymod.task"
-          and
-      @["value"] = "advance"
-  )]
+  $["data"][*][?(
+    @["destinationTable"] = "TransactionKeyValue"
       and
-  @["data"][*][?(
-      @["destinationTable"] = "TransactionKeyValue"
-          and
-      @["key"] = "proxymod.version"
-          and
-      @["value"] = "v0.0.1"
-  )]
+    @["key"] = "proxymod.task"
       and
-  @["data"][*][?(
-      @["destinationTable"] = "TransactionKeyValue"
-          and
-      @["key"] = "proxymod.config_1.PROJECT.runtime"
-          and
-      @["value"]
+    @["value"] = "advance"
   )]
+    and
+  $["data"][*][?(
+    @["destinationTable"] = "TransactionKeyValue"
       and
-  @["data"][*][?(
-      @["destinationTable"] = "TransactionKeyValue"
-          and
-      @["key"] = "proxymod.config_1.PROJECT.failure"
-          and
-      @["value"]
+    @["key"] = "proxymod.version"
+      and
+    @["value"] = "v0.0.1"
   )]
+    and
+  $["data"][*][?(
+    @["destinationTable"] = "TransactionKeyValue"
       and
-  @["data"][*][?(
-      @["destinationTable"] = "TransactionKeyValue"
-          and
-      @["key"] = "proxymod.config_1.INPUTS.in_dir"
-          and
-      @["value"]
+    @["key"] = "proxymod.config_1.PROJECT.runtime"
+      and
+    @["value"]
   )]
+    and
+  $["data"][*][?(
+    @["destinationTable"] = "TransactionKeyValue"
       and
-  @["data"][*][?(
+    @["key"] = "proxymod.config_1.PROJECT.failure"
+      and
+    @["value"]
+  )]
+    and
+  $["data"][*][?(
+    @["destinationTable"] = "TransactionKeyValue"
+      and
+    @["key"] = "proxymod.config_1.INPUTS.in_dir"
+      and
+    @["value"]
+  )]
+    and
+  $["data"][*][?(
+    @["destinationTable"] = "TransactionKeyValue"
+      and
+    @["key"] = "proxymod.config_1.INPUTS.in_file_one"
+      and
+    @["value"]
+  )]
+    and
+  $["data"][*][?(
+    @["destinationTable"] = "TransactionKeyValue"
+      and
+    @["key"] = "proxymod.config_1.INPUTS.in_file_two"
+      and
+    @["value"]
+  )]
+    and
+  $["data"][*][?(
+    @["destinationTable"] = "TransactionKeyValue"
+      and
+    @["key"] = "proxymod.config_1.OUTPUTS.out_dir"
+      and
+    @["value"]
+  )]
+    and
+  $["data"][*][?(
+    @["destinationTable"] = "TransactionKeyValue"
+      and
+    @["key"] = "proxymod.config_2.PROJECT.runtime"
+      and
+    @["value"]
+  )]
+    and
+  $["data"][*][?(
+    @["destinationTable"] = "TransactionKeyValue"
+      and
+    @["key"] = "proxymod.config_2.PROJECT.failure"
+      and
+    @["value"]
+  )]
+    and
+  $["data"][*][?(
+    @["destinationTable"] = "TransactionKeyValue"
+      and
+    @["key"] = "proxymod.config_2.OUTPUTS.out_dir"
+      and
+    @["value"]
+  )]
+    and
+  $["data"][*][?(
+    @["destinationTable"] = "TransactionKeyValue"
+      and
+    @["key"] = "proxymod.config_3.PROJECT.runtime"
+      and
+    @["value"]
+  )]
+    and
+  $["data"][*][?(
+    @["destinationTable"] = "TransactionKeyValue"
+      and
+    @["key"] = "proxymod.config_3.PROJECT.failure"
+      and
+    @["value"]
+  )]
+    and
+  $["data"][*][?(
+    @["destinationTable"] = "TransactionKeyValue"
+      and
+    @["key"] = "proxymod.config_3.OUTPUTS.out_dir"
+      and
+    @["value"]
+  )]
+    and
+  $["data"][*][?(
+    @["destinationTable"] = "Files"
+      and
+    @["mimetype"] = "text/csv"
+      and
+    @["name"] = $["data"][*][?(
       @["destinationTable"] = "TransactionKeyValue"
-          and
+        and
       @["key"] = "proxymod.config_1.INPUTS.in_file_one"
-          and
-      @["value"]
-  )]
+    )]["value"]
       and
-  @["data"][*][?(
+    @["subdir"] = $["data"][*][?(
       @["destinationTable"] = "TransactionKeyValue"
-          and
+        and
+      @["key"] = "proxymod.config_1.INPUTS.in_dir"
+    )]["value"]
+  )]
+    and
+  $["data"][*][?(
+    @["destinationTable"] = "Files"
+      and
+    @["mimetype"] = "text/csv"
+      and
+    @["name"] = $["data"][*][?(
+      @["destinationTable"] = "TransactionKeyValue"
+        and
       @["key"] = "proxymod.config_1.INPUTS.in_file_two"
-          and
-      @["value"]
-  )]
+    )]["value"]
       and
-  @["data"][*][?(
+    @["subdir"] = $["data"][*][?(
       @["destinationTable"] = "TransactionKeyValue"
-          and
-      @["key"] = "proxymod.config_1.OUTPUTS.out_dir"
-          and
-      @["value"]
+        and
+      @["key"] = "proxymod.config_1.INPUTS.in_dir"
+    )]["value"]
   )]
+    and
+  $["data"][*][?(
+    @["destinationTable"] = "Files"
       and
-  @["data"][*][?(
-      @["destinationTable"] = "TransactionKeyValue"
-          and
-      @["key"] = "proxymod.config_2.PROJECT.runtime"
-          and
-      @["value"]
+    @["mimetype"] = "text/x-python"
+      and
+    @["subdir"] = "models/"
   )]
-      and
-  @["data"][*][?(
-      @["destinationTable"] = "TransactionKeyValue"
-          and
-      @["key"] = "proxymod.config_2.PROJECT.failure"
-          and
-      @["value"]
-  )]
-      and
-  @["data"][*][?(
-      @["destinationTable"] = "TransactionKeyValue"
-          and
-      @["key"] = "proxymod.config_2.OUTPUTS.out_dir"
-          and
-      @["value"]
-  )]
-      and
-  @["data"][*][?(
-      @["destinationTable"] = "TransactionKeyValue"
-          and
-      @["key"] = "proxymod.config_3.PROJECT.runtime"
-          and
-      @["value"]
-  )]
-      and
-  @["data"][*][?(
-      @["destinationTable"] = "TransactionKeyValue"
-          and
-      @["key"] = "proxymod.config_3.PROJECT.failure"
-          and
-      @["value"]
-  )]
-      and
-  @["data"][*][?(
-      @["destinationTable"] = "TransactionKeyValue"
-          and
-      @["key"] = "proxymod.config_3.OUTPUTS.out_dir"
-          and
-      @["value"]
-  )]
-      and
-  @["eventID"]
-      and
-  @["eventType"] = "org.pacifica.metadata.ingest"
-      and
-  @["source"] = "/pacifica/metadata/ingest"
+    and
+  $["eventID"]
+    and
+  $["eventType"] = "org.pacifica.metadata.ingest"
+    and
+  $["source"] = "/pacifica/metadata/ingest"
 )]

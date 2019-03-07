@@ -33,9 +33,12 @@ def create_celery_app(cls, router: Router, name: str = 'pacifica.notifications.s
             'schema_url': event_data.get('schemaURL', None),
             'content_type': event_data.get('contentType', None),
 
-            'data': json.dumps(event_data),
+            'event_data': json.dumps(event_data),
+            'data': json.dumps(event_data.get('data', None)),
 
             'task_id': self.request.id,
+            'task_application_name': name,
+            'task_name': receive_task_name,
             'task_status': '202 Accepted',
 
             'exc_type': None,

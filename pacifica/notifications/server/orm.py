@@ -27,9 +27,12 @@ def create_peewee_model(db: peewee.Database) -> object:
         schema_url = peewee.CharField(index=True, null=True)
         content_type = peewee.CharField(index=True, null=True)
 
+        event_data = peewee.TextField()
         data = peewee.TextField()
 
         task_id = peewee.UUIDField(index=True, unique=True)
+        task_application_name = peewee.CharField(index=True)
+        task_name = peewee.CharField(index=True)
         task_status = peewee.CharField(index=True)
 
         exc_type = peewee.CharField(null=True)

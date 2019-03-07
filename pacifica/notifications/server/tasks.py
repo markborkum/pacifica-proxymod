@@ -44,11 +44,13 @@ def create_celery_app(cls, router: Router, name: str = 'pacifica.notifications.s
         })
         inst.save(force_insert=True)
 
-        inst.task_status = '102 Processing'
-        inst.save()
-
         try:
-            router(event_data)
+            route = router.match_first_or_raise(event_data)
+
+            inst.task_status = '102 Processing'
+            inst.save()
+
+            route(event_data)
         except RouteNotFoundRouterError:
             inst.task_status = '422 Unprocessable Entity'
             inst.save()

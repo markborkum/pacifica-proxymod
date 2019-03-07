@@ -53,19 +53,19 @@ def create_celery_app(cls, router: Router, name: str = 'pacifica.notifications.s
             inst.task_status = '102 Processing'
             inst.save()
 
-        try:
-            route(event_data)
-        except:
-            exc_type, exc_value, exc_traceback = sys.exc_info()
-            inst.exc_type = exc_type.__name__
-            inst.exc_value = str(exc_value)
-            inst.exc_traceback = traceback.format_tb(exc_traceback)
+            try:
+                route(event_data)
+            except:
+                exc_type, exc_value, exc_traceback = sys.exc_info()
+                inst.exc_type = exc_type.__name__
+                inst.exc_value = str(exc_value)
+                inst.exc_traceback = traceback.format_tb(exc_traceback)
 
-            inst.task_status = '500 Internal Server Error'
-            inst.save()
-        else:
-            inst.task_status = '200 OK'
-            inst.save()
+                inst.task_status = '500 Internal Server Error'
+                inst.save()
+            else:
+                inst.task_status = '200 OK'
+                inst.save()
 
         return
 

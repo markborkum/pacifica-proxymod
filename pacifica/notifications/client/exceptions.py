@@ -10,7 +10,7 @@
 
 from cloudevents.model import Event
 
-from pacifica.notifications.client.globals import CLOUDEVENTS_DEFAULT_EVENT_TYPE_, CLOUDEVENTS_DEFAULT_SOURCE_
+from .globals import CLOUDEVENTS_DEFAULT_EVENT_TYPE_, CLOUDEVENTS_DEFAULT_SOURCE_
 
 class EventError(BaseException):
     def __init__(self, event: Event) -> None:

@@ -16,8 +16,8 @@ import typing
 from cloudevents.model import Event
 from jsonpath2.path import Path
 
-from pacifica.notifications.client.exceptions import InvalidEventTypeValueError, InvalidSourceValueError, TransactionDuplicateAttributeError
-from pacifica.notifications.client.globals import CLOUDEVENTS_DEFAULT_EVENT_TYPE_, CLOUDEVENTS_DEFAULT_SOURCE_
+from .exceptions import InvalidEventTypeValueError, InvalidSourceValueError, TransactionDuplicateAttributeError
+from .globals import CLOUDEVENTS_DEFAULT_EVENT_TYPE_, CLOUDEVENTS_DEFAULT_SOURCE_
 
 class PacificaModel(abc.ABC):
     def __init__(self) -> None:

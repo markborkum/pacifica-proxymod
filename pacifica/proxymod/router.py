@@ -17,8 +17,9 @@ from pacifica.downloader import Downloader
 from pacifica.notifications.client.downloader_runners import RemoteDownloaderRunner
 from pacifica.notifications.client.router import Router
 from pacifica.notifications.client.uploader_runners import RemoteUploaderRunner
-from pacifica.proxymod.event_handlers import ProxEventHandler
 from pacifica.uploader import Uploader
+
+from .event_handlers import ProxEventHandler
 
 config = generate_global_config()
 

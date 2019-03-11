@@ -14,7 +14,8 @@ import os
 import typing
 
 from pacifica.downloader import Downloader
-from pacifica.notifications.client.models import File
+
+from .models import File
 
 def _to_opener(basedir_name: str, file: File) -> typing.Callable[[typing.Dict[str, typing.Any]], typing.TextIO]:
     func = lambda **kwargs: open(os.path.join(basedir_name, file.path), mode='r', encoding=file.encoding, **kwargs)

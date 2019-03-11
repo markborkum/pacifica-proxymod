@@ -12,8 +12,8 @@ import unittest
 
 from jsonpath2.path import Path
 
-from pacifica.notifications.client.event_handlers import NoopEventHandler
-from pacifica.notifications.client.router import RouteNotFoundRouterError, Router
+from ..event_handlers import NoopEventHandler
+from ..router import RouteNotFoundRouterError, Router
 
 class RouterTestCase(unittest.TestCase):
     def test_blank_router_raises(self):

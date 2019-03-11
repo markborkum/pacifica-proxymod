@@ -17,8 +17,9 @@ from jsonpath2.path import Path
 
 from pacifica.notifications.client.downloader_runners import LocalDownloaderRunner
 from pacifica.notifications.client.uploader_runners import LocalUploaderRunner
-from pacifica.proxymod.event_handlers import ProxEventHandler
-from pacifica.proxymod.router import router
+
+from ..event_handlers import ProxEventHandler
+from ..router import router
 
 class ProxTestCase(unittest.TestCase):
     def setUp(self):

@@ -12,8 +12,8 @@ import os
 import tempfile
 import unittest
 
-from pacifica.notifications.client.models import Transaction, TransactionKeyValue
-from pacifica.notifications.client.uploader_runners import LocalUploaderRunner
+from ..models import Transaction, TransactionKeyValue
+from ..uploader_runners import LocalUploaderRunner
 
 class LocalUploaderRunnerTestCase(unittest.TestCase):
     def test_local_uploader_runner(self):

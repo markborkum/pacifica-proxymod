@@ -19,7 +19,7 @@ import celery
 import cherrypy
 import peewee
 
-from pacifica.notifications.client.router import RouteNotFoundRouterError, Router
+from .router import RouteNotFoundRouterError, Router
 
 def create_peewee_model(db: peewee.Database) -> object:
     class ReceiveTaskModel(peewee.Model):

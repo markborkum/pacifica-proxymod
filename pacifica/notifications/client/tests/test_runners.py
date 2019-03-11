@@ -12,9 +12,9 @@ import os
 import tempfile
 import unittest
 
-from pacifica.notifications.client.downloader_runners import LocalDownloaderRunner
-from pacifica.notifications.client.models import File, Transaction, TransactionKeyValue
-from pacifica.notifications.client.uploader_runners import LocalUploaderRunner
+from ..downloader_runners import LocalDownloaderRunner
+from ..models import File, Transaction, TransactionKeyValue
+from ..uploader_runners import LocalUploaderRunner
 
 class LocalRunnerTestCase(unittest.TestCase):
     def test_local_runners(self):

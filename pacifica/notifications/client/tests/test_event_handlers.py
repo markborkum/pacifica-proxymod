@@ -15,8 +15,8 @@ import unittest
 from cloudevents.constants import SPEC_VERSION
 from cloudevents.model import Event
 
-from pacifica.notifications.client.event_handlers import NoopEventHandler
-from pacifica.notifications.client.globals import CLOUDEVENTS_DEFAULT_EVENT_TYPE_, CLOUDEVENTS_DEFAULT_SOURCE_
+from ..event_handlers import NoopEventHandler
+from ..globals import CLOUDEVENTS_DEFAULT_EVENT_TYPE_, CLOUDEVENTS_DEFAULT_SOURCE_
 
 class NoopEventHandlerTestCase(unittest.TestCase):
     def test_event_handler(self):

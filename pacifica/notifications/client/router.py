@@ -13,7 +13,7 @@ import typing
 from cloudevents.model import Event
 from jsonpath2.path import Path
 
-from pacifica.notifications.client.event_handlers import EventHandler
+from .event_handlers import EventHandler
 
 class Route(object):
     def __init__(self, path: Path, event_handler: EventHandler) -> None:

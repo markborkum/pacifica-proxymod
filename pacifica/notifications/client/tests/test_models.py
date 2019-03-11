@@ -14,9 +14,9 @@ import unittest
 from cloudevents.constants import SPEC_VERSION
 from cloudevents.model import Event
 
-from pacifica.notifications.client.exceptions import InvalidEventTypeValueError, InvalidSourceValueError, TransactionDuplicateAttributeError
-from pacifica.notifications.client.globals import CLOUDEVENTS_DEFAULT_EVENT_TYPE_, CLOUDEVENTS_DEFAULT_SOURCE_
-from pacifica.notifications.client.models import File, Transaction, TransactionKeyValue
+from ..exceptions import InvalidEventTypeValueError, InvalidSourceValueError, TransactionDuplicateAttributeError
+from ..globals import CLOUDEVENTS_DEFAULT_EVENT_TYPE_, CLOUDEVENTS_DEFAULT_SOURCE_
+from ..models import File, Transaction, TransactionKeyValue
 
 class PacificaModelTestCase(unittest.TestCase):
     def setUp(self):

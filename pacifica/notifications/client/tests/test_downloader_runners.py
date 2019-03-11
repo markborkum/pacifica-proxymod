@@ -12,8 +12,8 @@ import os
 import tempfile
 import unittest
 
-from pacifica.notifications.client.downloader_runners import LocalDownloaderRunner
-from pacifica.notifications.client.models import File
+from ..downloader_runners import LocalDownloaderRunner
+from ..models import File
 
 class LocalDownloaderRunnerTestCase(unittest.TestCase):
     def test_local_downloader_runner(self):

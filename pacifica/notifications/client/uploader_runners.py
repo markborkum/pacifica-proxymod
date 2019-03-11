@@ -14,11 +14,12 @@ import tempfile
 import time
 import typing
 
-from pacifica.notifications.client.exceptions import TransactionDuplicateAttributeError
-from pacifica.notifications.client.models import Transaction, TransactionKeyValue
 from pacifica.uploader import Uploader
 from pacifica.uploader.bundler import Bundler
 from pacifica.uploader.metadata import MetaData, MetaObj
+
+from .exceptions import TransactionDuplicateAttributeError
+from .models import Transaction, TransactionKeyValue
 
 def _should_sleep(**kwargs: typing.Dict[str, typing.Any]) -> bool:
     for name in ['state', 'task', 'task_percent']:

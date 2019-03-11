@@ -21,7 +21,7 @@ ReceiveTaskModel = create_peewee_model(playhouse.db_url.connect(os.getenv('DATAB
 
 ReceiveTaskModel.create_table(safe=True)
 
-celery_app = ReceiveTaskModel.create_celery_app(router, 'pacifica.proxymod.tasks', 'pacifica.proxymod.tasks.receive', backend='rpc://', broker='pyamqp://')
+celery_app = ReceiveTaskModel.create_celery_app(router, 'pacifica.proxymod.app', 'pacifica.proxymod.tasks.receive', backend='rpc://', broker='pyamqp://')
 
 application = ReceiveTaskModel.create_cherrypy_app(celery_app.tasks['pacifica.proxymod.tasks.receive'])
 

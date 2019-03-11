@@ -2,6 +2,7 @@ celery
 cherrypy
 cloudevents-python
 jsonpath2
+pacifica-cli
 pacifica-downloader
 pacifica-uploader
 peewee

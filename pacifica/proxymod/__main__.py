@@ -14,7 +14,7 @@ import os
 import cherrypy
 import playhouse.db_url
 
-from pacifica.notifications.server.orm import create_peewee_model
+from pacifica.notifications.client.receiver import create_peewee_model
 from pacifica.proxymod.router import router
 
 ReceiveTaskModel = create_peewee_model(playhouse.db_url.connect(os.getenv('DATABASE_URL', 'sqlite:///:memory:')))

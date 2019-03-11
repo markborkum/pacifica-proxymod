@@ -113,15 +113,7 @@ def create_peewee_model(db: peewee.Database) -> object:
 
         @classmethod
         def create_cherrypy_app(cls, receive_task: celery.Task) -> cherrypy.Application:
-            def error_page_default(**kwargs: typing.Dict[str, typing.Any]) -> bytes:
-                cherrypy.response.headers['Content-Type'] = 'application/json; charset=utf-8'
-                return bytes(json.dumps(kwargs), 'utf-8')
-
             class Get(object):
-                _cp_config = {
-                    'error_page.default': error_page_default,
-                }
-
                 exposed = True
 
                 def GET(self, task_id: str) -> bytes:
@@ -157,10 +149,6 @@ def create_peewee_model(db: peewee.Database) -> object:
                     }), 'utf-8')
 
             class Receive(object):
-                _cp_config = {
-                    'error_page.default': error_page_default,
-                }
-
                 exposed = True
 
                 def POST(self) -> bytes:
@@ -173,10 +161,6 @@ def create_peewee_model(db: peewee.Database) -> object:
                     return bytes(json.dumps(str(async_result.id)), 'utf-8')
 
             class Status(object):
-                _cp_config = {
-                    'error_page.default': error_page_default,
-                }
-
                 exposed = True
 
                 def GET(self, task_id: str) -> bytes:
@@ -192,10 +176,6 @@ def create_peewee_model(db: peewee.Database) -> object:
                     return bytes(json.dumps(inst.task_status), 'utf-8')
 
             class Root(object):
-                _cp_config = {
-                    'error_page.default': error_page_default,
-                }
-
                 exposed = True
 
                 get = Get()
@@ -249,8 +229,13 @@ def create_peewee_model(db: peewee.Database) -> object:
                         cls.created.desc(),
                     ])))), 'utf-8')
 
+            def error_page_default(**kwargs: typing.Dict[str, typing.Any]) -> bytes:
+                cherrypy.response.headers['Content-Type'] = 'application/json; charset=utf-8'
+                return bytes(json.dumps(kwargs), 'utf-8')
+
             application = cherrypy.Application(Root(), '/', config={
                 '/': {
+                    'error_page.default': error_page_default,
                     'request.dispatch': cherrypy.dispatch.MethodDispatcher(),
                 },
             })

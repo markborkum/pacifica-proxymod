@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 #
-# pacifica-notifications-client: pacifica/proxymod/event_handlers.py
+# pacifica-proxymod: pacifica/proxymod/event_handlers.py
 #
 # Copyright (c) 2019, Battelle Memorial Institute
 # All rights reserved.
@@ -18,10 +18,10 @@ import typing
 
 from cloudevents.model import Event
 
-from pacifica.notifications.client.downloader_runners import DownloaderRunner
-from pacifica.notifications.client.event_handlers import EventHandler
-from pacifica.notifications.client.models import File, Transaction, TransactionKeyValue
-from pacifica.notifications.client.uploader_runners import UploaderRunner
+from pacifica.dispatcher.downloader_runners import DownloaderRunner
+from pacifica.dispatcher.event_handlers import EventHandler
+from pacifica.dispatcher.models import File, Transaction, TransactionKeyValue
+from pacifica.dispatcher.uploader_runners import UploaderRunner
 
 from .exceptions import ConfigNotFoundProxEventHandlerError, InvalidConfigProxEventHandlerError, InvalidModelProxEventHandlerError
 
@@ -246,4 +246,4 @@ class ProxEventHandler(EventHandler):
 
         pass
 
-__all__ = ('ProxEventHandler')
+__all__ = ('ProxEventHandler', )

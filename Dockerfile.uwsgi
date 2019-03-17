@@ -3,14 +3,7 @@ FROM python:3.6
 WORKDIR /usr/src/app
 COPY requirements.txt ./
 RUN pip install --no-cache-dir -r requirements.txt
-RUN pip install --no-cache-dir uwsgi pymysql psycopg2
-ENV PEEWEE_PROTO mysql
-ENV PEEWEE_USER proxymod
-ENV PEEWEE_PASS proxymod
-ENV PEEWEE_PORT 3306
-ENV PEEWEE_ADDR 127.0.0.1
-ENV PEEWEE_DATABASE pacifica_proxymod
-ENV NOTIFICATIONS_CPCONFIG /usr/src/app/server.conf
+RUN pip install --no-cache-dir uwsgi pymysql
 COPY . .
 EXPOSE 8069
-ENTRYPOINT [ "/bin/bash", "/usr/src/app/entrypoint.sh" ]
+ENTRYPOINT ["uwsgi", "--http-socket", "0.0.0.0:8069", "--master", "--die-on-term", "--wsgi-file", "/usr/src/app/pacifica/proxymod/__main__.py"]

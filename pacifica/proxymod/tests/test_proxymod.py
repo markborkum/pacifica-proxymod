@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 #
-# pacifica-notifications-client: pacifica/proxymod/tests/test_proxymod.py
+# pacifica-proxymod: pacifica/proxymod/tests/test_proxymod.py
 #
 # Copyright (c) 2019, Battelle Memorial Institute
 # All rights reserved.
@@ -15,8 +15,8 @@ import unittest
 from cloudevents.model import Event
 from jsonpath2.path import Path
 
-from pacifica.notifications.client.downloader_runners import LocalDownloaderRunner
-from pacifica.notifications.client.uploader_runners import LocalUploaderRunner
+from pacifica.dispatcher.downloader_runners import LocalDownloaderRunner
+from pacifica.dispatcher.uploader_runners import LocalUploaderRunner
 
 from ..event_handlers import ProxEventHandler
 from ..router import router

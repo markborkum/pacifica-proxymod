@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 #
-# pacifica-notifications-client: pacifica/__init__.py
+# pacifica-proxymod: pacifica/__init__.py
 #
 # Copyright (c) 2019, Battelle Memorial Institute
 # All rights reserved.

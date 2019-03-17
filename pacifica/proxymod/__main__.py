@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 #
-# pacifica-notifications-client: pacifica/proxymod/__main__.py
+# pacifica-proxymod: pacifica/proxymod/__main__.py
 #
 # Copyright (c) 2019, Battelle Memorial Institute
 # All rights reserved.
@@ -14,7 +14,7 @@ import os
 import cherrypy
 import playhouse.db_url
 
-from pacifica.notifications.client.receiver import create_peewee_model
+from pacifica.dispatcher.receiver import create_peewee_model
 
 from .router import router
 
@@ -22,7 +22,7 @@ ReceiveTaskModel = create_peewee_model(playhouse.db_url.connect(os.getenv('DATAB
 
 ReceiveTaskModel.create_table(safe=True)
 
-celery_app = ReceiveTaskModel.create_celery_app(router, 'pacifica.proxymod.app', 'pacifica.proxymod.tasks.receive', backend='rpc://', broker='pyamqp://')
+celery_app = ReceiveTaskModel.create_celery_app(router, 'pacifica.proxymod.app', 'pacifica.proxymod.tasks.receive', backend=os.getenv('BACKEND_URL', 'rpc://'), broker=os.getenv('BROKER_URL', 'pyamqp://'))
 
 application = ReceiveTaskModel.create_cherrypy_app(celery_app.tasks['pacifica.proxymod.tasks.receive'])
 
@@ -51,7 +51,7 @@ def main() -> None:
 
     return
 
-__all__ = ('ReceiveTaskModel', 'application', 'celery_app', 'main')
+__all__ = ('ReceiveTaskModel', 'application', 'celery_app', 'main', )
 
 if __name__ == '__main__':
     main()

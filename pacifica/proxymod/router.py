@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 #
-# pacifica-notifications-client: pacifica/proxymod/router.py
+# pacifica-proxymod: pacifica/proxymod/router.py
 #
 # Copyright (c) 2019, Battelle Memorial Institute
 # All rights reserved.
@@ -13,10 +13,10 @@ import os
 from jsonpath2.path import Path
 
 from pacifica.cli.methods import generate_global_config, generate_requests_auth
+from pacifica.dispatcher.downloader_runners import RemoteDownloaderRunner
+from pacifica.dispatcher.router import Router
+from pacifica.dispatcher.uploader_runners import RemoteUploaderRunner
 from pacifica.downloader import Downloader
-from pacifica.notifications.client.downloader_runners import RemoteDownloaderRunner
-from pacifica.notifications.client.router import Router
-from pacifica.notifications.client.uploader_runners import RemoteUploaderRunner
 from pacifica.uploader import Uploader
 
 from .event_handlers import ProxEventHandler
@@ -33,4 +33,4 @@ router = Router()
 
 router.add_route(Path.parse_file(os.path.join(os.path.dirname(__file__), 'jsonpath2', 'proxymod.txt')), ProxEventHandler(downloader_runner, uploader_runner))
 
-__all__ = ('router')
+__all__ = ('router', )

@@ -28,9 +28,9 @@ test_script:
   - ps: >
       mkdir C:\tmp; C:\pacifica\Scripts\activate.ps1;
       pre-commit run -a;
-      $celery_proc = Start-Process C:\pacifica\Scripts\coverage.exe -ArgumentList "run --include=pacifica/* -p -m celery -A pacifica.proxymod.tasks worker -l info -c 1 -P solo" -RedirectStandardError celery-error.log -RedirectStandardOutput celery-output.log;
+      $celery_proc = Start-Process C:\pacifica\Scripts\coverage.exe -ArgumentList "run --include=pacifica/* -p -m celery -A 'pacifica.proxymod.__main__:celery_app' worker -l info -c 1 -P solo" -RedirectStandardError celery-error.log -RedirectStandardOutput celery-output.log;
       coverage run --include='pacifica/*' -m pytest -v;
-      python -m celery -A pacifica.proxymod.tasks control shutdown;
+      python -m celery -A 'pacifica.proxymod.__main__:celery_app' control shutdown;
       $celery_proc | Wait-Process;
       ls .coverage* | %{ python -m coverage combine -a $_.name };
       coverage report -m --fail-under=100;

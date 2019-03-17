@@ -10,8 +10,8 @@ services:
     ports:
     - 8069:8069
     environment:
-      PEEWEE_ADDR: mysql
-      BROKER_URL: pyamqp://guest:guest@rabbit:5672//
+      BROKER_URL: pyamqp://guest:guest@rabbit:5672/
+      DATABASE_URL: mysql://proxymod:proxymod@127.0.0.1:3306/pacifica_proxymod
 
   backend:
     build:
@@ -21,8 +21,8 @@ services:
      - rabbit
      - mysql
     environment:
-      PEEWEE_ADDR: mysql
-      BROKER_URL: pyamqp://guest:guest@rabbit:5672//
+      BROKER_URL: pyamqp://guest:guest@rabbit:5672/
+      DATABASE_URL: mysql://proxymod:proxymod@127.0.0.1:3306/pacifica_proxymod
 
   mysql:
     image: mysql:5

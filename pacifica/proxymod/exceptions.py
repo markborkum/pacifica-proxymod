@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 #
-# pacifica-notifications-client: pacifica/proxymod/exceptions.py
+# pacifica-proxymod: pacifica/proxymod/exceptions.py
 #
 # Copyright (c) 2019, Battelle Memorial Institute
 # All rights reserved.
@@ -12,7 +12,7 @@ import typing
 
 from cloudevents.model import Event
 
-from pacifica.notifications.client.models import File
+from pacifica.dispatcher.models import File
 
 class ProxEventHandlerError(BaseException):
     def __init__(self, event: Event) -> None:
@@ -49,4 +49,4 @@ class InvalidModelProxEventHandlerError(ProxEventHandlerError):
     def __str__(self) -> str:
         return 'proxymod model for file \'{0}\' is invalid: {1}'.format(self.file.path.replace('\'', '\\\''), str(self.reason))
 
-__all__ = ('ProxEventHandlerError', 'ConfigNotFoundProxEventHandlerError', 'InvalidConfigProxEventHandlerError', 'InvalidModelProxEventHandlerError')
+__all__ = ('ProxEventHandlerError', 'ConfigNotFoundProxEventHandlerError', 'InvalidConfigProxEventHandlerError', 'InvalidModelProxEventHandlerError', )

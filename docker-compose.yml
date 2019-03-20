@@ -11,7 +11,7 @@ services:
     - 8069:8069
     environment:
       BROKER_URL: pyamqp://guest:guest@rabbit:5672/
-      DATABASE_URL: mysql://proxymod:proxymod@127.0.0.1:3306/pacifica_proxymod
+      DATABASE_URL: mysql://proxymod:proxymod@127.0.0.1:3306/pacifica_dispatcher_proxymod
 
   backend:
     build:
@@ -22,13 +22,13 @@ services:
      - mysql
     environment:
       BROKER_URL: pyamqp://guest:guest@rabbit:5672/
-      DATABASE_URL: mysql://proxymod:proxymod@127.0.0.1:3306/pacifica_proxymod
+      DATABASE_URL: mysql://proxymod:proxymod@127.0.0.1:3306/pacifica_dispatcher_proxymod
 
   mysql:
     image: mysql:5
     environment:
       MYSQL_ROOT_PASSWORD: root
-      MYSQL_DATABASE: pacifica_proxymod
+      MYSQL_DATABASE: pacifica_dispatcher_proxymod
       MYSQL_USER: proxymod
       MYSQL_PASSWORD: proxymod
     ports:

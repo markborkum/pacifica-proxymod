@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 #
-# pacifica-proxymod: pacifica/proxymod/tests/test_proxymod.py
+# pacifica-dispatcher-proxymod: pacifica/dispatcher/proxymod/tests/test_proxymod.py
 #
 # Copyright (c) 2019, Battelle Memorial Institute
 # All rights reserved.
@@ -23,7 +23,7 @@ from ..router import router
 
 class ProxTestCase(unittest.TestCase):
     def setUp(self):
-        self.basedir_name = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..', '..', 'test_files', 'C234-1234-1234'))
+        self.basedir_name = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..', '..', '..', 'test_files', 'C234-1234-1234'))
 
         with open(os.path.join(self.basedir_name, 'event.json'), mode='r') as event_file:
             self.event_data = json.load(event_file)

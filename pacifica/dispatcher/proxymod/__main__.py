@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 #
-# pacifica-proxymod: pacifica/proxymod/__main__.py
+# pacifica-dispatcher-proxymod: pacifica/dispatcher/proxymod/__main__.py
 #
 # Copyright (c) 2019, Battelle Memorial Institute
 # All rights reserved.

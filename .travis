@@ -12,9 +12,9 @@ env:
   BROKER_URL: redis://localhost:6379/0
 
 script:
-- coverage run --include='pacifica/*' -p -m celery -A 'pacifica.proxymod.__main__:celery_app' worker -c 1 -P solo -l info &
+- coverage run --include='pacifica/*' -p -m celery -A 'pacifica.dispatcher.proxymod.__main__:celery_app' worker -c 1 -P solo -l info &
 - coverage run --include='pacifica/*' -m pytest -v
-- celery -A 'pacifica.proxymod.__main__:celery_app' control shutdown || true
+- celery -A 'pacifica.dispatcher.proxymod.__main__:celery_app' control shutdown || true
 - coverage combine -a .coverage*
 - coverage report -m --fail-under 100
 - if [[ $CODECLIMATE_REPO_TOKEN ]] ; then codeclimate-test-reporter; fi

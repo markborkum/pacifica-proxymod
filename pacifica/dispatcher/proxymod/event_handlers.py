@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 #
-# pacifica-proxymod: pacifica/proxymod/event_handlers.py
+# pacifica-dispatcher-proxymod: pacifica/dispatcher/proxymod/event_handlers.py
 #
 # Copyright (c) 2019, Battelle Memorial Institute
 # All rights reserved.

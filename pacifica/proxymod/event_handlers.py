@@ -232,13 +232,13 @@ class ProxEventHandler(EventHandler):
                                                 except Exception as reason:
                                                     raise InvalidModelProxEventHandlerError(event, model_file_inst, reason)
 
-                # (bundle, job_id, state) = self.uploader_runner.upload(uploader_tempdir_name, transaction=Transaction(submitter=transaction_inst.submitter, instrument=transaction_inst.instrument, proposal=transaction_inst.proposal), transaction_key_values=[TransactionKeyValue(key='Transactions._id', value=transaction_inst._id)])
+                # (bundle, job_id, state) = self.uploader_runner.upload(uploader_tempdir_name, transaction=Transaction(submitter=transaction_inst.submitter, instrument=transaction_inst.instrument, project=transaction_inst.project), transaction_key_values=[TransactionKeyValue(key='Transactions._id', value=transaction_inst._id)])
 
                 with open(os.path.join(uploader_tempdir_name, 'upload-stdout.log'), mode='w') as uploader_stdout_file:
                     with open(os.path.join(uploader_tempdir_name, 'upload-stderr.log'), mode='w') as uploader_stderr_file:
                         with contextlib.redirect_stdout(uploader_stdout_file):
                             with contextlib.redirect_stderr(uploader_stderr_file):
-                                (bundle, job_id, state) = self.uploader_runner.upload(uploader_tempdir_name, transaction=Transaction(submitter=transaction_inst.submitter, instrument=transaction_inst.instrument, proposal=transaction_inst.proposal), transaction_key_values=[TransactionKeyValue(key='Transactions._id', value=transaction_inst._id)])
+                                (bundle, job_id, state) = self.uploader_runner.upload(uploader_tempdir_name, transaction=Transaction(submitter=transaction_inst.submitter, instrument=transaction_inst.instrument, project=transaction_inst.project), transaction_key_values=[TransactionKeyValue(key='Transactions._id', value=transaction_inst._id)])
 
                 pass
 
